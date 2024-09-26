@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Begins</string>
+    
+<string name="facebook_app_id">7935311009913194</string>
+<string name="fb_login_protocol_scheme">fb1234</string>
+<string name="facebook_client_token">ce08645baa87bfd832188e0679e5591a</string>
+
+
 </resources>
+
+   
