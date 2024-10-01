@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image, Alert, ActivityIndicator } from 'react-native'
 import React from 'react'
 import { useState } from 'react';
 import CheckBox from '@react-native-community/checkbox';
@@ -12,13 +12,33 @@ export default function LoginScreen({ navigation }) {
   const [isChecked1, setChecked1] = useState(false);
   const [isChecked2, setChecked2] = useState(false);
   const [secureTextEntry, setSecureTextEntry] = useState(true);
+  const [successMessage, setSuccessMessage] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
+  const { loading } = useSelector((state) => state.auth);
+
   const handleLogin = () => {
-    dispatch(loginUser({ email, password }));
-  };
+    if (!email || !password) {
+      Alert.alert('Error', 'Please enter both email and password');
+      return;
+    }
+    dispatch(loginUser({ email, password, navigation }))
+      .then(() => {
+        // If login is successful, set the success message
+        setSuccessMessage('Login successful!');
+        
+        // Clear the success message after 3 seconds
+        setTimeout(() => {
+          setSuccessMessage('');
+        }, 3000);
+      })
+      .catch((error) => {
+        // Handle error if needed
+        console.error(error);
+      });
+    };
   
 
   const togglePasswordVisibility = () => {
@@ -27,6 +47,13 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <View style={styles.Background}>
+
+{successMessage ? (
+        <View style={styles.successMessage}>
+          <Text style={styles.successText}>{successMessage}</Text>
+        </View>
+      ) : null}
+
       <View style={styles.Txtcover}>
         <Text style={styles.WelcomeTxt}>Welcome Back!</Text>
       </View>
@@ -87,13 +114,29 @@ export default function LoginScreen({ navigation }) {
         <Text style={{ color: 'white', marginTop: 6, fontWeight: 'bold' }}>Agree Term and condition</Text>
       </View>
 
-<TouchableOpacity onPress={handleLogin}>
-      <View style={{ alignItems: 'center', marginTop: 20 }}>
-        <View style={{ width: '90%', height: 45, borderWidth: 2, borderColor: 'orange', borderRadius: 30, justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={{ color: 'white', fontWeight: '500', fontSize: 17 }}>Sign In</Text>
+      {loading ? (
+        <View style={{ alignItems: 'center', marginTop: 20 }}>
+          <ActivityIndicator size="large" color="orange" />
         </View>
-      </View>
-      </TouchableOpacity>
+      ) : (
+        <TouchableOpacity onPress={handleLogin} disabled={loading}>
+          <View style={{ alignItems: 'center', marginTop: 20 }}>
+            <View
+              style={{
+                width: '90%',
+                height: 45,
+                borderWidth: 2,
+                borderColor: 'orange',
+                borderRadius: 30,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Text style={{ color: 'white', fontWeight: '500', fontSize: 17 }}>Sign In</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+      )}
 
       <View style={styles.container}>
         <View style={styles.line} />
@@ -198,5 +241,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'white',
     marginHorizontal: 10
-  }
+  },
+   successMessage: {
+    backgroundColor: 'green',
+    padding: 10,
+    alignItems: 'center',
+    position: 'absolute', // Position at the top
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1, // Make sure it's above other components
+  },
+  successText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
 })
