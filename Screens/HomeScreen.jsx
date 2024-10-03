@@ -9,7 +9,7 @@ export default function HomeScreen({navigation}) {
         <View style={styles.container}>
         {/* Header */}
         <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.OpenDrawer()}>
+        <TouchableOpacity onPress={() => navigation.openDrawer()}>
           <Icon name="menu" size={30} color="white" />
        </TouchableOpacity>
           <Text style={{ fontSize: 20, fontWeight: '500', color: 'white', flex: 1, textAlign: 'center' }}>Classroom</Text>
@@ -28,11 +28,11 @@ export default function HomeScreen({navigation}) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ADD8E6', // Light blue background
+        backgroundColor: '#ADD8E6', 
       },
       header: {
         height: 120,
-        backgroundColor: '#00008B', // Dark blue header
+        backgroundColor: '#00008B', 
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 10,
