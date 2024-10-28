@@ -367,11 +367,13 @@ export default function Signupscreen({ navigation }) {
                             />
                         </TouchableOpacity>
                     </View>
+                    <TouchableOpacity onPress={()=> navigation.navigate('Login')}>
                     <View style={{
                         alignItems: 'center', marginTop: 20, marginBottom: 40
                     }}>
                         <Text style={{ fontSize: 15, textDecorationLine: 'underline', color: 'white', }}> I already have an account</Text>
                     </View>
+                    </TouchableOpacity>
                 </ScrollView>
             )}
         </Formik>

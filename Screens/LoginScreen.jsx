@@ -159,18 +159,19 @@ export default function LoginScreen({ navigation }) {
         </TouchableOpacity>
       </View>
 
-<TouchableOpacity  onPress={() => navigation.navigate('Signup')}>
+<TouchableOpacity onPress={() => navigation.navigate('Signup')}>
       <View style={{ alignItems: 'center', marginTop: 30 }}>
         <Text style={{ fontSize: 15, color: 'white', textDecorationLine: 'underline' }}>Create a new account</Text>
       </View>
       </TouchableOpacity>
 
-
+<TouchableOpacity onPress={() => navigation.navigate('HomeDrawer2')}>
       <View style={{alignItems: 'center', marginTop: 20}}>
         <View style={{ width: '35%', height: 45, backgroundColor: '#666CAD', borderRadius: 30, justifyContent: 'center', alignItems: 'center' }}>
           <Text style={{ fontSize: 15, color: "white", fontWeight: '500' }}> Guest User</Text>
         </View>
       </View>
+      </TouchableOpacity>
     </View>
   )
 }
