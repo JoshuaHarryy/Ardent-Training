@@ -28,7 +28,6 @@ export default function HomeScreen({ navigation }) {
         });
 
         const data = await response.json();
-        console.log(data)
         setCourses(data.data);
       } catch (error) {
         console.error('Error fetching courses:', error);
@@ -161,7 +160,7 @@ export default function HomeScreen({ navigation }) {
                   <HTMLView
                     key={item.id}
                     value={item.description}
-                    stylesheet={{ p: { fontSize: 16, color: 'black', fontWeight: '400' } }}
+                    stylesheet={{ p: { fontSize: 15, color: 'black', fontWeight: '400' } }}
                   />
                 ))}
             </View>
@@ -269,7 +268,7 @@ export default function HomeScreen({ navigation }) {
                   <HTMLView
                     key={item.id}
                     value={item.description}
-                    stylesheet={{ p: { fontSize: 16, color: 'black', fontWeight: '400' } }}
+                    stylesheet={{ p: { fontSize: 15, color: 'black', fontWeight: '400' } }}
                   />
                 ))}
             </View>
@@ -377,7 +376,7 @@ export default function HomeScreen({ navigation }) {
                   <HTMLView
                     key={item.id}
                     value={item.description}
-                    stylesheet={{ p: { fontSize: 16, color: 'black', fontWeight: '400' } }} // Optional: style the HTML
+                    stylesheet={{ p: { fontSize: 15, color: 'black', fontWeight: '400' } }} // Optional: style the HTML
                   />
                 ))}
             </View>
@@ -485,7 +484,7 @@ export default function HomeScreen({ navigation }) {
                   <HTMLView
                     key={item.id}
                     value={item.description}
-                    stylesheet={{ p: { fontSize: 16, color: 'black', fontWeight: '400' } }} // Optional: style the HTML
+                    stylesheet={{ p: { fontSize: 15, color: 'black', fontWeight: '400' } }} // Optional: style the HTML
                   />
                 ))}
             </View>
@@ -568,7 +567,7 @@ export default function HomeScreen({ navigation }) {
                   <HTMLView
                     key={item.id}
                     value={item.description}
-                    stylesheet={{ p: { fontSize: 16, color: 'black', fontWeight: '400' } }} // Optional: style the HTML
+                    stylesheet={{ p: { fontSize: 15, color: 'black', fontWeight: '400' } }} // Optional: style the HTML
                   />
                 ))}
             </View>
@@ -675,7 +674,7 @@ export default function HomeScreen({ navigation }) {
                   <HTMLView
                     key={item.id}
                     value={item.description}
-                    stylesheet={{ p: { fontSize: 16, color: 'black', fontWeight: '400' } }} // Optional: style the HTML
+                    stylesheet={{ p: { fontSize: 15, color: 'black', fontWeight: '400' } }} // Optional: style the HTML
                   />
                 ))}
             </View>
@@ -727,11 +726,11 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#647ACA',
+    backgroundColor: '#5E71EA',
   },
   header: {
     height: 120,
-    backgroundColor: '#003366',
+    backgroundColor: '#173A70',
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,

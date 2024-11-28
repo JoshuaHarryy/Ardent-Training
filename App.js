@@ -29,6 +29,14 @@ import InvoicesScreen from './Screens/InvoicesScreen';
 import ForumScreen from './Screens/ForumScreen';
 import MyprofileScreen from './Screens/MyprofileScreen';
 import RyaDaySkipperScreen from './Courses/RyaDaySkipperScreen';
+import RyaCoastalSkipperScreen from './Courses/RyaCoastalSkipperScreen';
+import RyaFastTrackScreen from './Courses/RyaFastTrackScreen';
+import RyapprCourseScreen from './Courses/RyapprCourseScreen';
+import RyaMarineSrcScreen from './Courses/RyaMarineSrcScreen';
+import RyaYachtmasterScreen from './Courses/RyaYachtmasterScreen';
+import PracticalCourseScreen from './Courses/PracticalCourseScreen';
+import RyaSkipperPlayerScreen from './CoursePlayer/RyaSkipperPlayerScreen';
+
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -65,6 +73,41 @@ const AppStack = () => {
       <Stack.Screen
         name="RyaDaySkipper"
         component={RyaDaySkipperScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="RyaCoastalSkipper"
+        component={RyaCoastalSkipperScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="RyaFastTrack"
+        component={RyaFastTrackScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Rya PPR Course"
+        component={RyapprCourseScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Rya Marine Radio SRC Course"
+        component={RyaMarineSrcScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Practical Course"
+        component={PracticalCourseScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Rya Yachtmaster Ocean Theory Course"
+        component={RyaYachtmasterScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="RyaDaySkipperCoursePlayer"
+        component={RyaSkipperPlayerScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

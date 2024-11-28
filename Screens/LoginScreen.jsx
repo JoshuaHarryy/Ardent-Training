@@ -1,11 +1,11 @@
 import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image, Alert, ActivityIndicator } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import CheckBox from '@react-native-community/checkbox';
 import Feather from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../Redux/authSlice';
+import { checkToken, loginUser } from '../Redux/authSlice';
 
 export default function LoginScreen({ navigation }) {
 
@@ -28,7 +28,7 @@ export default function LoginScreen({ navigation }) {
       .then(() => {
         // If login is successful, set the success message
         setSuccessMessage('Login successful!');
-        
+        // dispatch(checkToken());
         // Clear the success message after 3 seconds
         setTimeout(() => {
           setSuccessMessage('');

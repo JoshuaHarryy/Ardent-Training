@@ -39,20 +39,45 @@ export default function CustomDrawerContent(props) {
                   <View style={styles.courseOptionsContainer}>
                     <DrawerItem
                       label="RYA Day Skipper Theory Course"
+                      labelStyle={{ flexWrap: 'wrap'}}
                       onPress={() => {
                         props.navigation.navigate('RyaDaySkipper');
                       }}
                     />
                     <DrawerItem
-                      label="RYA Yachtmaster Theory Course"
+                      label="RYA Coastal Skipper/Yachtmaster Offshore Theory Course"
                       onPress={() => {
-                        props.navigation.navigate('RYA Yachtmaster Theory Course');
+                        props.navigation.navigate('RyaCoastalSkipper');
                       }}
                     />
                     <DrawerItem
-                      label="RYA Competent Crew Course"
+                      label="RYA Fast Track to Coastal Skipper/Yachtmaster Offshore Theory Course."
                       onPress={() => {
-                        props.navigation.navigate('RYA Competent Crew Course');
+                        props.navigation.navigate('RyaFastTrack');
+                      }}
+                    />
+                    <DrawerItem
+                      label="RYA PPR Course."
+                      onPress={() => {
+                        props.navigation.navigate('Rya PPR Course');
+                      }}
+                    />
+                    <DrawerItem
+                      label="Rya Marine Radio SRC Course"
+                      onPress={() => {
+                        props.navigation.navigate('Rya Marine Radio SRC Course');
+                      }}
+                    />
+                    <DrawerItem
+                      label="Rya Yachtmaster Ocean Theory Course"
+                      onPress={() => {
+                        props.navigation.navigate('Rya Yachtmaster Ocean Theory Course');
+                      }}
+                    />
+                    <DrawerItem
+                      label="Practical Course"
+                      onPress={() => {
+                        props.navigation.navigate('Practical Course');
                       }}
                     />
                   </View>
