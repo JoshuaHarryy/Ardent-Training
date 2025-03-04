@@ -5,11 +5,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Provider, useDispatch, useSelector } from 'react-redux';
-import AsyncStorage from '@react-native-async-storage/async-storage'; // Added for token management
+import AsyncStorage from '@react-native-async-storage/async-storage'; 
 import store from './Redux/Store';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { checkToken } from './Redux/authSlice'; // Import the checkToken action
-
+import { checkToken } from './Redux/authSlice'; 
 import LoginScreen from './Screens/LoginScreen';
 import Signupscreen from './Screens/Signupscreen';
 import SplashScreen from './Screens/SplashScreen';
@@ -36,12 +35,13 @@ import RyaMarineSrcScreen from './Courses/RyaMarineSrcScreen';
 import RyaYachtmasterScreen from './Courses/RyaYachtmasterScreen';
 import PracticalCourseScreen from './Courses/PracticalCourseScreen';
 import RyaSkipperPlayerScreen from './CoursePlayer/RyaSkipperPlayerScreen';
-
+import DiscussionScreen from './CoursePlayer/DiscussionScreen';
+import RepliesScreen from './CoursePlayer/RepliesScreen';
+import AddDiscusionScreen from './CoursePlayer/AddDiscusionScreen';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
-// AppStack for the screens after user logs in
 const AppStack = () => {
   return (
     <Stack.Navigator>
@@ -108,6 +108,21 @@ const AppStack = () => {
       <Stack.Screen
         name="RyaDaySkipperCoursePlayer"
         component={RyaSkipperPlayerScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Discussion"
+        component={DiscussionScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Replies"
+        component={RepliesScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="AddDiscusion"
+        component={AddDiscusionScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

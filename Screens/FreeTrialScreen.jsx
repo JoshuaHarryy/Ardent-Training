@@ -1,8 +1,9 @@
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import HTMLView from 'react-native-htmlview';
+import FreeTrialCC from '../Components/FreeTrialCC';
 
 
 
@@ -23,7 +24,7 @@ useEffect(() => {
       });
 
       const data = await response.json();
-      // console.log(data)
+      // console.log("FreeTrialData", data)
       setCourses(data.data);
     } catch (error) {
       console.error('Error fetching courses:', error);
@@ -55,102 +56,15 @@ useEffect(() => {
         <Text style={{fontSize: 20, fontWeight: '900', color: 'white'}}>Skipper Courses</Text>
       </View>
 
-      <ScrollView>
+    
 
-       {/* RYA Day Skipper Theory Course */}
-
-       <View style={{ alignItems: 'center', marginBottom: 40, marginTop: 40 }}>
-          <View style={{ width: '90%', height: 720, backgroundColor: 'white', borderRadius: 10, elevation: 10, position: 'relative' }}>
-
-            {/* Image and Price */}
-            <View>
-              {courses
-                .filter(course => course.id === 1)
-                .map(item => (
-                  <View key={item.id}>
-                    <Image
-                      source={
-                        item.imageFulUrl && item.imageFulUrl !== 'null'
-                          ? { uri: item.imageFulUrl }
-                          : require('../Assets/DaySkipper.jpg') // Fallback image
-                      }
-                      onError={() => {
-                        console.log('Image URL failed to load, showing default image.');
-                        setImageSource(require('../Assets/DaySkipper.jpg')); // Ensure fallback if URL fails
-                      }}
-                      style={{
-                        width: '100%',
-                        height: 200,
-                        borderTopLeftRadius: 10,
-                        borderTopRightRadius: 10,
-                      }}
-                    />
-                    <View
-                      style={{
-                        position: 'absolute',
-                        top: 10,
-                        left: 10,
-                        width: 100,
-                        height: 50,
-                        backgroundColor: 'white',
-                        borderRadius: 15,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <Text
-                        style={{
-                          fontSize: 16,
-                          color: '#00008B',
-                          fontWeight: '500',
-                        }}
-                      >
-                        £{item.price} only
-                      </Text>
-                    </View>
-                  </View>
-                ))}
-            </View>
-
-            {/* Name */}
-            <View style={{ marginTop: 25, marginHorizontal: 30 }}>
-              {courses
-                .filter(course => course.id === 1)
-                .map((item) => (
-                  <Text style={{ fontSize: 16, color: '#00008B', fontWeight: '500', marginBottom: 10 }} key={item.id}>
-                    {item.name}
-                  </Text>
-                ))}
-            </View>
-
-            {/* Description */}
-            <View style={{ marginTop: 15, marginHorizontal: 30 }}>
-              {courses
-                .filter(course => course.id === 1)
-                .map((item) => (
-                  <HTMLView
-                    key={item.id}
-                    value={item.description}
-                    stylesheet={{ p: { fontSize: 15, color: 'black', fontWeight: '400' } }}
-                  />
-                ))}
-            </View>
-
-            {/* View More and Buy Now at the Bottom */}
-            <View style={{ position: 'absolute', bottom: 20, left: 30, right: 30, justifyContent: 'space-between' }}>
-              <Text style={{ color: 'purple', fontSize: 14, marginBottom: 20 }}>View more details</Text>
-
-              <TouchableOpacity onPress={()=> navigation.navigate('RyaDaySkipperCoursePlayer')}>
-                <View style={{ width: '100%', height: 60, backgroundColor: '#FE8E91', borderRadius: 15, alignItems: 'center', justifyContent: 'center' }}>
-                  <Text style={{ color: 'white', fontWeight: '500', fontSize: 19 }}>TRY IT FOR FREE</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-
+      <FlatList
+      data={courses.filter(item=> item.itHasFreeLessons)}
+      keyExtractor={(item)=> item.id.toString()}
+      renderItem={({item})=> <FreeTrialCC courses={item}/>}
+      />
       
-        </ScrollView>
+       
     </View>
     
   )

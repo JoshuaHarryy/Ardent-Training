@@ -5,7 +5,8 @@ import HTMLView from 'react-native-htmlview';
 import Entypo from 'react-native-vector-icons/Entypo';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkToken } from '../Redux/authSlice';
-
+import CourseCard from '../Components/CourseCard';
+import { FlatList } from 'react-native-gesture-handler';
 
 
 export default function HomeScreen({ navigation }) {
@@ -39,14 +40,14 @@ export default function HomeScreen({ navigation }) {
     fetchCourses();
   }, []);
 
-  const handleBuyNow = async() => {
+  const handleBuyNow = async () => {
 
     const result = await dispatch(checkToken());
     if (result.payload && result.payload.token) {
-      
+
       setIsModalVisible(true);
     } else {
-      
+
       Alert.alert("Sign In Required", 'Please sign in first to enable this feature.', [
         { text: 'OK', onPress: () => navigation.navigate('Signup') },
       ]);
@@ -85,6 +86,12 @@ export default function HomeScreen({ navigation }) {
           <Text style={{ fontSize: 18, color: 'white' }}>You have not enrolled in any course.</Text>
         </View>
 
+
+        <FlatList
+          data={courses}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => <CourseCard courses={item} />}
+        />
 
         {/* RYA Day Skipper Theory Course */}
 
@@ -210,20 +217,20 @@ export default function HomeScreen({ navigation }) {
                 .filter(course => course.id === 15)
                 .map(item => (
                   <View key={item.id}>
-                     <Image
-                  source={
-                    !imageError && item.imageFulUrl
-                      ? { uri: item.imageFulUrl }
-                      : require('../Assets/DaySkipper.jpg')
-                  }
-                  style={{
-                    width: '100%',
-                    height: 200,
-                    borderTopLeftRadius: 10,
-                    borderTopRightRadius: 10,
-                  }}
-                  onError={() => setImageError(true)} 
-                />
+                    <Image
+                      source={
+                        !imageError && item.imageFulUrl
+                          ? { uri: item.imageFulUrl }
+                          : require('../Assets/DaySkipper.jpg')
+                      }
+                      style={{
+                        width: '100%',
+                        height: 200,
+                        borderTopLeftRadius: 10,
+                        borderTopRightRadius: 10,
+                      }}
+                      onError={() => setImageError(true)}
+                    />
                     <View
                       style={{
                         position: 'absolute',
@@ -319,19 +326,19 @@ export default function HomeScreen({ navigation }) {
                 .map(item => (
                   <View key={item.id}>
                     <Image
-                  source={
-                    !imageError && item.imageFulUrl
-                      ? { uri: item.imageFulUrl }
-                      : require('../Assets/DaySkipper.jpg')
-                  }
-                  style={{
-                    width: '100%',
-                    height: 200,
-                    borderTopLeftRadius: 10,
-                    borderTopRightRadius: 10,
-                  }}
-                  onError={() => setImageError(true)} 
-                />
+                      source={
+                        !imageError && item.imageFulUrl
+                          ? { uri: item.imageFulUrl }
+                          : require('../Assets/DaySkipper.jpg')
+                      }
+                      style={{
+                        width: '100%',
+                        height: 200,
+                        borderTopLeftRadius: 10,
+                        borderTopRightRadius: 10,
+                      }}
+                      onError={() => setImageError(true)}
+                    />
                     <View
                       style={{
                         position: 'absolute',
@@ -427,19 +434,19 @@ export default function HomeScreen({ navigation }) {
                 .map(item => (
                   <View key={item.id}>
                     <Image
-                  source={
-                    !imageError && item.imageFulUrl
-                      ? { uri: item.imageFulUrl }
-                      : require('../Assets/DaySkipper.jpg')
-                  }
-                  style={{
-                    width: '100%',
-                    height: 200,
-                    borderTopLeftRadius: 10,
-                    borderTopRightRadius: 10,
-                  }}
-                  onError={() => setImageError(true)} 
-                />
+                      source={
+                        !imageError && item.imageFulUrl
+                          ? { uri: item.imageFulUrl }
+                          : require('../Assets/DaySkipper.jpg')
+                      }
+                      style={{
+                        width: '100%',
+                        height: 200,
+                        borderTopLeftRadius: 10,
+                        borderTopRightRadius: 10,
+                      }}
+                      onError={() => setImageError(true)}
+                    />
                     <View
                       style={{
                         position: 'absolute',
@@ -509,20 +516,20 @@ export default function HomeScreen({ navigation }) {
                 .filter(course => course.id === 43)
                 .map(item => (
                   <View key={item.id}>
-                  <Image
-                  source={
-                    !imageError && item.imageFulUrl
-                      ? { uri: item.imageFulUrl }
-                      : require('../Assets/DaySkipper.jpg')
-                  }
-                  style={{
-                    width: '100%',
-                    height: 200,
-                    borderTopLeftRadius: 10,
-                    borderTopRightRadius: 10,
-                  }}
-                  onError={() => setImageError(true)} 
-                />
+                    <Image
+                      source={
+                        !imageError && item.imageFulUrl
+                          ? { uri: item.imageFulUrl }
+                          : require('../Assets/DaySkipper.jpg')
+                      }
+                      style={{
+                        width: '100%',
+                        height: 200,
+                        borderTopLeftRadius: 10,
+                        borderTopRightRadius: 10,
+                      }}
+                      onError={() => setImageError(true)}
+                    />
                     <View
                       style={{
                         position: 'absolute',
@@ -618,19 +625,19 @@ export default function HomeScreen({ navigation }) {
               .map(item => (
                 <View key={item.id}>
                   <Image
-                  source={
-                    !imageError && item.imageFulUrl
-                      ? { uri: item.imageFulUrl }
-                      : require('../Assets/DaySkipper.jpg')
-                  }
-                  style={{
-                    width: '100%',
-                    height: 200,
-                    borderTopLeftRadius: 10,
-                    borderTopRightRadius: 10,
-                  }}
-                  onError={() => setImageError(true)} 
-                />
+                    source={
+                      !imageError && item.imageFulUrl
+                        ? { uri: item.imageFulUrl }
+                        : require('../Assets/DaySkipper.jpg')
+                    }
+                    style={{
+                      width: '100%',
+                      height: 200,
+                      borderTopLeftRadius: 10,
+                      borderTopRightRadius: 10,
+                    }}
+                    onError={() => setImageError(true)}
+                  />
                   <View
                     style={{
                       position: 'absolute',

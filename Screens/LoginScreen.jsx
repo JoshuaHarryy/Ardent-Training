@@ -24,12 +24,11 @@ export default function LoginScreen({ navigation }) {
       Alert.alert('Error', 'Please enter both email and password');
       return;
     }
-    dispatch(loginUser({ email, password, navigation }))
+    dispatch(loginUser({ email, password }))
       .then(() => {
+        console.log("success")
         // If login is successful, set the success message
         setSuccessMessage('Login successful!');
-        // dispatch(checkToken());
-        // Clear the success message after 3 seconds
         setTimeout(() => {
           setSuccessMessage('');
         }, 3000);

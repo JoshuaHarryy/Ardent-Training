@@ -36,7 +36,7 @@ export const registerUser = createAsyncThunk(
 
 export const loginUser = createAsyncThunk(
   'auth/loginUser',
-  async ({ email, password, navigation }, { rejectWithValue, dispatch }) => {
+  async ({ email, password, }, { rejectWithValue, dispatch }) => {
     try {
       const response = await fetch("https://staging.ardent-training.com/api/student-login", {
         method: 'POST',
@@ -55,9 +55,6 @@ export const loginUser = createAsyncThunk(
 
 
       await AsyncStorage.setItem('token', result.token);
-
-      
-      console.log('Login successful')
       // navigation.navigate('HomeDrawer');
       dispatch(checkToken());
       return result;
